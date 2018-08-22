@@ -3,8 +3,6 @@ module Datawow
   class VideoClassification
     def all(options = {})
       options[:token] ||= Datawow.project_key
-      options[:per_page] ||= 20
-      options[:page] ||= 1
       connection.get('/api/videos/closed_questions', options)
     end
 

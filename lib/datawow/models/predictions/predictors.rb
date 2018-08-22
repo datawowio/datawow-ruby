@@ -3,8 +3,6 @@ module Datawow
   class Predictor
     def all(options = {})
       options[:token] ||= Datawow.project_key
-      options[:per_page] ||= 20
-      options[:page] ||= 1
       connection.get('/api/prime/predictions', options)
     end
 
@@ -14,9 +12,9 @@ module Datawow
     end
 
     def find_by(options = {})
-      options[:token] ||= Datawow.project_key
+      options[:token] ||= KSequencing.project_key
       options[:path_param] = true
-      connection.get("/api/projects/images/#{options[:id]}", options)
+      connection.get("/api/prime/predictions/#{options[:id]}", options)
     end
 
     private

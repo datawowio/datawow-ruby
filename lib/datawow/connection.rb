@@ -83,27 +83,13 @@ module Datawow
       options
     end
 
-    def debug
-      true
-    end
-
     def base_point
       options = {
         image: 'https://k-sequencing.datawow.io/',
-        ai: '',
-        text: '',
-        video: ''
+        ai: 'https://k-sequencing.datawow.io/',
+        text: 'https://kiyo-text.datawow.io/',
+        video: 'https://k-sequencing.datawow.io/'
       }
-
-      if debug
-        options = {
-          image: 'http://localhost:3001/',
-          ai: 'http://localhost:3001/',
-          text: 'http://localhost:3002/',
-          video: 'http://localhost:3001/'
-        }
-
-      end
       options[@model]
     end
   end

@@ -3,8 +3,6 @@ module Datawow
   class ImageClosedQuestion
     def all(options = {})
       options[:token] ||= Datawow.project_key
-      options[:per_page] ||= 20
-      options[:page] ||= 1
       connection.get('/api/images/closed_questions', options)
     end
 
@@ -15,7 +13,7 @@ module Datawow
 
     def find_by(options = {})
       options[:token] ||= Datawow.project_key
-      connection.get("/api/projects/images/#{options[:id]}", options)
+      connection.get('/api/images/closed_question', options)
     end
 
     private
