@@ -11,6 +11,8 @@ module Datawow
       connection.post('/api/prime/predictions', options)
     end
 
+    #  if endpoint is params you must set
+    #  options[:path_param] = true
     def find_by(options = {})
       options[:token] ||= KSequencing.project_key
       options[:path_param] = true

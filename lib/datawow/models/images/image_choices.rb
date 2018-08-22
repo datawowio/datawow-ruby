@@ -11,7 +11,7 @@ module Datawow
       connection.post('/api/images/choices', options)
     end
 
-     def find_by(options = {})
+    def find_by(options = {})
       options[:token] ||= Datawow.project_key
       connection.get('/api/images/choice', options)
     end

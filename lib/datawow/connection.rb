@@ -13,7 +13,7 @@ module Datawow
         request.url(path)
         request.headers['Content-Type'] = 'application/json'
         request.headers['Authorization'] = options[:token] unless options[:token].nil?
-        request.params = options[:path_param] ? prediction_options(options) : options
+        request.params = options[:path_param] ? params_url_options(options) : options
       end
       Response.new(data, status_code, message, meta, total)
     rescue Error, Faraday::Error => e
@@ -78,7 +78,7 @@ module Datawow
       Response.new(nil, code, message, nil)
     end
 
-    def prediction_options(options)
+    def params_url_options(options)
       %i[id path_param].each { |e| options.delete(e) }
       options
     end

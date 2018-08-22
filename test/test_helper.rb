@@ -1,4 +1,4 @@
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'simplecov'
 
 SimpleCov.start
@@ -9,8 +9,11 @@ require 'minitest/autorun'
 require 'webmock/minitest'
 
 class TestBase < Minitest::Test
-  attr_reader :options, :image_choice, :image_choices, :image_closed_question, :image_closed_questions,
-              :image_message, :image_messages, :image_photo_tag, :image_photo_tags, :prediction, :predictions
+  attr_reader :options, :image_choice, :image_choices, :image_closed_question,
+              :image_closed_questions, :image_message, :image_messages, :image_photo_tag,
+              :image_photo_tags, :prediction, :predictions, :videos, :video,
+              :text_categories, :text_category, :text_conversations, :text_conversation,
+              :text_closed_questions, :text_closed_question
 
   IMAGE_CHOICES_URL          = 'https://k-sequencing.datawow.io/api/images/choices'.freeze
   IMAGE_CHOICE_URL           = 'https://k-sequencing.datawow.io/api/images/choice'.freeze
@@ -22,6 +25,10 @@ class TestBase < Minitest::Test
   IMAGE_PHOTO_TAG            = 'https://k-sequencing.datawow.io/api/images/photo_tag'.freeze
   PREDICTIONS_URL            = 'https://k-sequencing.datawow.io/api/prime/predictions'.freeze
   IMAGE_URL                  = 'https://k-sequencing.datawow.io/api/projects/images'.freeze
+  VIDEO_URL                  = 'https://k-sequencing.datawow.io/api/videos/closed_questions'.freeze
+  TEXT_CATEGORY_URL          = 'https://kiyo-text.datawow.io/api/v1/text/text_categories'.freeze
+  TEXT_CONVERSATION_URL      = 'https://kiyo-text.datawow.io/api/v1/text/text_conversations'.freeze
+  TEXT_CLOSED_QUESTION_URL   = 'https://kiyo-text.datawow.io/api/v1/text/text_closed_questions'.freeze
 
   def setup
     @image_choices          = FileReader.new('test/fixtures/image_choice/all.json').read_json
@@ -34,6 +41,14 @@ class TestBase < Minitest::Test
     @image_photo_tag        = FileReader.new('test/fixtures/image_photo_tag/create.json').read_json
     @predictions            = FileReader.new('test/fixtures/prediction/all.json').read_json
     @prediction             = FileReader.new('test/fixtures/prediction/create.json').read_json
+    @videos                 = FileReader.new('test/fixtures/video_classification/all.json').read_json
+    @video                  = FileReader.new('test/fixtures/video_classification/create.json').read_json
+    @text_category          = FileReader.new('test/fixtures/text_category/create.json').read_json
+    @text_categories        = FileReader.new('test/fixtures/text_category/all.json').read_json
+    @text_conversation      = FileReader.new('test/fixtures/text_conversation/create.json').read_json
+    @text_conversations     = FileReader.new('test/fixtures/text_conversation/all.json').read_json
+    @text_closed_question   = FileReader.new('test/fixtures/text_closed_question/create.json').read_json
+    @text_closed_questions  = FileReader.new('test/fixtures/text_closed_question/all.json').read_json
     @options = {
       token: 'project token'
     }
