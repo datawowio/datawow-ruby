@@ -6,7 +6,7 @@ HTTP RESTFul for calling DataWow APIs
 
 # Installation
 ```ruby
-gem 'datawow', '~> 0.0.2'
+gem 'datawow', '~> 1.0.0'
 ```
 
 #### Generate setting
