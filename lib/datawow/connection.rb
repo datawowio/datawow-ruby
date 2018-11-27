@@ -85,10 +85,10 @@ module Datawow
 
     def base_point
       options = {
-        image: 'https://k-sequencing.datawow.io/',
-        ai: 'https://k-sequencing.datawow.io/',
+        image: 'https://kiyo-image.datawow.io/',
+        ai: 'https://kiyo-image.datawow.io/',
         text: 'https://kiyo-text.datawow.io/',
-        video: 'https://k-sequencing.datawow.io/'
+        video: 'https://kiyo-image.datawow.io/'
       }
       options[@model]
     end
