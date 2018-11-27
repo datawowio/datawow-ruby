@@ -3,17 +3,17 @@ module Datawow
   class ImageChoice
     def all(options = {})
       options[:token] ||= Datawow.project_key
-      connection.get('/api/images/choices', options)
+      connection.get('/api/v1/images/choices', options)
     end
 
     def create(options = {})
       options[:token] ||= Datawow.project_key
-      connection.post('/api/images/choices', options)
+      connection.post('/api/v1/images/choices', options)
     end
 
     def find_by(options = {})
       options[:token] ||= Datawow.project_key
-      connection.get('/api/images/choice', options)
+      connection.get('/api/v1/images/choice', options)
     end
 
     private
