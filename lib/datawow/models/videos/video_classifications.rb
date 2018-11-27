@@ -3,12 +3,12 @@ module Datawow
   class VideoClassification
     def all(options = {})
       options[:token] ||= Datawow.project_key
-      connection.get('/api/videos/closed_questions', options)
+      connection.get(path, options)
     end
 
     def create(options = {})
       options[:token] ||= Datawow.project_key
-      connection.post('/api/videos/closed_questions', options)
+      connection.post(path, options)
     end
 
     #  if endpoint is params you must set
@@ -16,13 +16,21 @@ module Datawow
     def find_by(options = {})
       options[:token] ||= Datawow.project_key
       options[:path_param] = true
-      connection.get("/api/videos/closed_questions/#{options[:id]}", options)
+      connection.get(path(options[:id]), options)
     end
 
     private
 
     def connection
       @connection ||= Connection.new('video')
+    end
+
+    def path(id = nil)
+      if id.nil?
+        '/videos/closed_questions'
+      else
+        "/videos/closed_questions/#{id}"
+      end
     end
   end
 end

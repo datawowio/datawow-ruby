@@ -23,9 +23,9 @@ class TestBase < Minitest::Test
   IMAGE_MESSAGE_URL          = 'https://kiyo-image.datawow.io/api/v1/images/message'.freeze
   IMAGE_PHOTO_TAGS           = 'https://kiyo-image.datawow.io/api/v1/images/photo_tags'.freeze
   IMAGE_PHOTO_TAG            = 'https://kiyo-image.datawow.io/api/v1/images/photo_tag'.freeze
-  PREDICTIONS_URL            = 'https://kiyo-image.datawow.io/api/prime/predictions'.freeze
-  IMAGE_URL                  = 'https://kiyo-image.datawow.io/api/projects/images'.freeze
-  VIDEO_URL                  = 'https://kiyo-image.datawow.io/api/videos/closed_questions'.freeze
+  PREDICTIONS_URL            = 'https://kiyo-image.datawow.io/api/v1/prime/predictions'.freeze
+  IMAGE_URL                  = 'https://kiyo-image.datawow.io/api/v1/projects/images'.freeze
+  VIDEO_URL                  = 'https://kiyo-image.datawow.io/api/v1/videos/closed_questions'.freeze
   TEXT_CATEGORY_URL          = 'https://kiyo-text.datawow.io/api/v1/text/text_categories'.freeze
   TEXT_CONVERSATION_URL      = 'https://kiyo-text.datawow.io/api/v1/text/text_conversations'.freeze
   TEXT_CLOSED_QUESTION_URL   = 'https://kiyo-text.datawow.io/api/v1/text/text_closed_questions'.freeze

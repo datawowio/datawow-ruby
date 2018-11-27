@@ -1,25 +1,34 @@
 module Datawow
   # :nodoc:
   class ImageClosedQuestion
+
     def all(options = {})
       options[:token] ||= Datawow.project_key
-      connection.get('/api/v1/images/closed_questions', options)
+      connection.get(path, options)
     end
 
     def create(options = {})
       options[:token] ||= Datawow.project_key
-      connection.post('/api/v1/images/closed_questions', options)
+      connection.post(path, options)
     end
 
     def find_by(options = {})
       options[:token] ||= Datawow.project_key
-      connection.get('/api/v1/images/closed_question', options)
+      connection.get(path(true), options)
     end
 
     private
 
     def connection
       @connection ||= Connection.new('image')
+    end
+
+    def path(find = false)
+      if find
+        '/images/closed_question'
+      else
+        '/images/closed_questions'
+      end
     end
   end
 end
