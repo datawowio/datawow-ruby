@@ -15,14 +15,14 @@ class TestBase < Minitest::Test
               :text_categories, :text_category, :text_conversations, :text_conversation,
               :text_closed_questions, :text_closed_question
 
-  IMAGE_CHOICES_URL          = 'https://k-sequencing.datawow.io/api/images/choices'.freeze
-  IMAGE_CHOICE_URL           = 'https://k-sequencing.datawow.io/api/images/choice'.freeze
-  IMAGE_CLOSED_QUESTIONS_URL = 'https://k-sequencing.datawow.io/api/images/closed_questions'.freeze
-  IMAGE_CLOSED_QUESTION_URL  = 'https://k-sequencing.datawow.io/api/images/closed_question'.freeze
-  IMAGE_MESSAGES_URL         = 'https://k-sequencing.datawow.io/api/images/messages'.freeze
-  IMAGE_MESSAGE_URL          = 'https://k-sequencing.datawow.io/api/images/message'.freeze
-  IMAGE_PHOTO_TAGS           = 'https://k-sequencing.datawow.io/api/images/photo_tags'.freeze
-  IMAGE_PHOTO_TAG            = 'https://k-sequencing.datawow.io/api/images/photo_tag'.freeze
+  IMAGE_CHOICES_URL          = 'https://k-sequencing.datawow.io/api/v1/images/choices'.freeze
+  IMAGE_CHOICE_URL           = 'https://k-sequencing.datawow.io/api/v1/images/choice'.freeze
+  IMAGE_CLOSED_QUESTIONS_URL = 'https://k-sequencing.datawow.io/api/v1/images/closed_questions'.freeze
+  IMAGE_CLOSED_QUESTION_URL  = 'https://k-sequencing.datawow.io/api/v1/images/closed_question'.freeze
+  IMAGE_MESSAGES_URL         = 'https://k-sequencing.datawow.io/api/v1/images/messages'.freeze
+  IMAGE_MESSAGE_URL          = 'https://k-sequencing.datawow.io/api/v1/images/message'.freeze
+  IMAGE_PHOTO_TAGS           = 'https://k-sequencing.datawow.io/api/v1/images/photo_tags'.freeze
+  IMAGE_PHOTO_TAG            = 'https://k-sequencing.datawow.io/api/v1/images/photo_tag'.freeze
   PREDICTIONS_URL            = 'https://k-sequencing.datawow.io/api/prime/predictions'.freeze
   IMAGE_URL                  = 'https://k-sequencing.datawow.io/api/projects/images'.freeze
   VIDEO_URL                  = 'https://k-sequencing.datawow.io/api/videos/closed_questions'.freeze
