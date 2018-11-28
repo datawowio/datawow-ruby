@@ -20,7 +20,7 @@ module Datawow
     private
 
     def connection
-      @connection ||= Connection.new('image')
+      @connection ||= Connection.new(model: :image)
     end
 
     def path(find = false)
