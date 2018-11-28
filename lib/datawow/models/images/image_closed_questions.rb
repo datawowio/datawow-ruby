@@ -7,9 +7,9 @@ module Datawow
       connection.get(path, options)
     end
 
-    def create(options = {})
-      options[:token] ||= Datawow.project_key
-      connection.post(path, options)
+    def create(options= {}, token = '')
+      # connection.post(path, options)
+      test.create(path, options, token)
     end
 
     def find_by(options = {})
@@ -23,11 +23,15 @@ module Datawow
       @connection ||= Connection.new('image')
     end
 
+    def test
+      @connection ||= Connector.new(type: :image)
+    end
+
     def path(find = false)
       if find
-        '/images/closed_question'
+        'images/closed_question'
       else
-        '/images/closed_questions'
+        'images/closed_questions'
       end
     end
   end

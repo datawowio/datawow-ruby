@@ -1,5 +1,6 @@
 require_relative 'datawow/client_response'
 require_relative 'datawow/connection'
+require_relative 'datawow/connector'
 require_relative 'datawow/error'
 require_relative 'datawow/version'
 
