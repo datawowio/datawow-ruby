@@ -5,7 +5,7 @@ module Datawow
   # :nodoc:
   class Connection
     def initialize(model = nil, version_api = '/api/v1')
-      @model = model.to_sym
+      @model = model
       @version_api = version_api
     end
 
