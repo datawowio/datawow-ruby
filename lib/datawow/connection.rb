@@ -4,13 +4,14 @@ require File.expand_path('client_response.rb', __dir__)
 module Datawow
   # :nodoc:
   class Connection
-    def initialize(model = nil)
-      @model = model.to_sym
+    def initialize(model:, version_api: 'v1')
+      @model = model
+      @version_api = version_api
     end
 
     def get(path, options = {})
       @response = connection.get do |request|
-        request.url(path)
+        request.url("#{@version_api}#{path}")
         request.headers['Content-Type'] = 'application/json'
         request.headers['Authorization'] = options[:token] unless options[:token].nil?
         request.params = options[:path_param] ? params_url_options(options) : options
@@ -22,7 +23,7 @@ module Datawow
 
     def post(path, options = {}, query_params = {})
       @response = connection.post do |request|
-        request.path = path
+        request.url("#{@version_api}#{path}")
         request.headers['Content-Type'] = 'application/json'
         request.headers['Authorization'] = options[:token] unless options[:token].nil?
         request.params = query_params
@@ -85,10 +86,10 @@ module Datawow
 
     def base_point
       options = {
-        image: 'https://k-sequencing.datawow.io/',
-        ai: 'https://k-sequencing.datawow.io/',
-        text: 'https://kiyo-text.datawow.io/',
-        video: 'https://k-sequencing.datawow.io/'
+        image: 'https://kiyo-image.datawow.io/api/',
+        ai: 'https://kiyo-image.datawow.io/api/',
+        text: 'https://kiyo-text.datawow.io/api/',
+        video: 'https://kiyo-image.datawow.io/api/'
       }
       options[@model]
     end

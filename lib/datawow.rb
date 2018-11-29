@@ -17,6 +17,8 @@ require_relative 'datawow/models/videos/video_classifications'
 
 # :nodoc:
 module Datawow
+  extend self
+
   attr_accessor :project_key
 
   class << self

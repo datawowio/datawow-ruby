@@ -3,12 +3,12 @@ module Datawow
   class TextCategory
     def all(options = {})
       options[:token] ||= Datawow.project_key
-      connection.get('/api/v1/text/text_categories', options)
+      connection.get(path, options)
     end
 
     def create(options = {})
       options[:token] ||= Datawow.project_key
-      connection.post('/api/v1/text/text_categories', options)
+      connection.post(path, options)
     end
 
     #  if endpoint is params you must set
@@ -16,13 +16,21 @@ module Datawow
     def find_by(options = {})
       options[:token] ||= Datawow.project_key
       options[:path_param] = true
-      connection.get("/api/v1/text/text_categories/#{options[:id]}", options)
+      connection.get(path(options[:id]), options)
     end
 
     private
 
     def connection
-      @connection ||= Connection.new('text')
+      @connection ||= Connection.new(model: :text)
+    end
+
+    def path(id = nil)
+      if id.nil?
+        '/text/text_categories'
+      else
+        "/text/text_categories/#{id}"
+      end
     end
   end
 end

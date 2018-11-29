@@ -3,8 +3,8 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |s|
   s.name          = 'datawow'
-  s.version       = '0.0.1'
-  s.date          = '2018-08-15'
+  s.version       = '1.0.0'
+  s.date          = '2018-11-27'
   s.summary       = 'HTTP RESTFul for calling DataWow APIs'
   s.description   = 'Moderation suite'
   s.post_install_message = File.read('INSTALL.md') if File.exist?('INSTALL.md')
