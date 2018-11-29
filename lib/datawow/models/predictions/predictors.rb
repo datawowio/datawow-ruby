@@ -22,7 +22,7 @@ module Datawow
     private
 
     def connection
-      @connection ||= Connection.new('ai')
+      @connection ||= Connection.new(model: :ai)
     end
 
     def path(id = nil)

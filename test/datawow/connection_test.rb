@@ -79,7 +79,7 @@ module Datawow
     private
 
     def connection
-      @connection ||= Datawow::Connection.new('image')
+      @connection ||= Datawow::Connection.new(model: :image)
     end
   end
 end
