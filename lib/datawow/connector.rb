@@ -1,10 +1,13 @@
-require "net/http"
-require 'net/https'
-require "uri"
+# frozen_string_literal: true
 
-require File.expand_path("client_response.rb", __dir__)
+require 'net/http'
+require 'net/https'
+require 'uri'
+
+require File.expand_path('client_response.rb', __dir__)
 
 module Datawow
+  # :nodoc:
   class Connector
     def initialize(type:, version_api: 'v1')
       @version_api = version_api
@@ -15,13 +18,16 @@ module Datawow
       base_uri = base_point(@type)
       uri = URI.parse("#{base_uri}/#{@version_api}/#{path}")
       puts uri
-      https = Net::HTTP.new(uri.host,uri.port)
+      https = Net::HTTP.new(uri.host, uri.port)
       # https.use_ssl = true
 
       request = build_request(:POST, uri, token)
       request.set_form_data(data)
       response = https.request(request)
-      handle_response(response)
+      result = handle_response(response)
+      body = JSON.parse result.body
+
+      Response.new(body["data"], result.code, result.message, body['meta'], 1)
     end
 
     private
@@ -37,10 +43,10 @@ module Datawow
         request = Net::HTTP::Post.new(uri.request_uri)
       end
 
-      request["User-Agent"] = "Datawow Ruby gem client"
-      request["Accept"] = "application/json"
-      request["Content-Type"] = "application/json"
-      request["Authorization"] = token
+      request['User-Agent'] = 'Datawow Ruby gem client'
+      request['Accept'] = 'application/json'
+      request['Content-Type'] = 'application/json'
+      request['Authorization'] = token
 
       request
     end
