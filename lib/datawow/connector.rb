@@ -27,7 +27,23 @@ module Datawow
       result = handle_response(response)
       body = JSON.parse result.body
 
-      Response.new(body["data"], result.code, result.message, body['meta'], 1)
+      Response.new(body['data'], result.code, result.message, body['meta'], 1)
+    end
+
+    def list(path, data = {}, token = '')
+      base_uri = base_point(@type)
+      uri = URI.parse("#{base_uri}/#{@version_api}/#{path}")
+      uri.query = URI.encode_www_form(data)
+
+      https = Net::HTTP.new(uri.host, uri.port)
+      # https.use_ssl = true
+
+      request = build_request(:GET, uri, token)
+      response = https.request(request)
+      result = handle_response(response)
+      body = JSON.parse result.body
+
+      Response.new(body['data'], result.code, result.message, body['meta'], body['meta']['total_count'])
     end
 
     private
@@ -40,7 +56,7 @@ module Datawow
       when :POST
         request = Net::HTTP::Post.new(uri.request_uri)
       when :GET
-        request = Net::HTTP::Post.new(uri.request_uri)
+        request = Net::HTTP::Get.new(uri.request_uri)
       end
 
       request['User-Agent'] = 'Datawow Ruby gem client'

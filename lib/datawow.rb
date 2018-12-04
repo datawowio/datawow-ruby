@@ -1,8 +1,12 @@
+# frozen_string_literal: true
+require 'pry-byebug'
+
 require_relative 'datawow/client_response'
 require_relative 'datawow/connection'
 require_relative 'datawow/connector'
 require_relative 'datawow/error'
 require_relative 'datawow/version'
+require_relative 'datawow/interface'
 
 require_relative 'datawow/models/images/image_closed_questions'
 require_relative 'datawow/models/images/image_photo_tags'
@@ -18,7 +22,7 @@ require_relative 'datawow/models/videos/video_classifications'
 
 # :nodoc:
 module Datawow
-  extend self
+  module_function
 
   attr_accessor :project_key
 

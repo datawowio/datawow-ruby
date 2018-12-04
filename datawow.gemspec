@@ -1,4 +1,6 @@
-lib = File.expand_path('../lib', __FILE__)
+# frozen_string_literal: true
+
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |s|
@@ -19,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'faraday_middleware', '~> 0.12.2', '>= 0.12.2'
   s.add_runtime_dependency 'json',               '~> 1.8',    '>= 1.8.3'
   s.add_development_dependency 'minitest',       '~> 5.11', '>= 5.11.3'
+  s.add_development_dependency 'pry-byebug',     '~> 3.6'
   s.add_development_dependency 'rake',           '~> 12.3'
   s.add_development_dependency 'simplecov',      '~> 0.15.1'
   s.add_development_dependency 'webmock',        '~> 3.3'
