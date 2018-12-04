@@ -14,10 +14,9 @@ module Datawow
       @type = type
     end
 
-    def create(path, data = {}, token = '')
+    def post(path, data = {}, token = '')
       base_uri = base_point(@type)
       uri = URI.parse("#{base_uri}/#{@version_api}/#{path}")
-      puts uri
       https = Net::HTTP.new(uri.host, uri.port)
       # https.use_ssl = true
 
@@ -30,7 +29,7 @@ module Datawow
       Response.new(body['data'], result.code, result.message, body['meta'], 1)
     end
 
-    def list(path, data = {}, token = '')
+    def get(path, data = {}, token = '')
       base_uri = base_point(@type)
       uri = URI.parse("#{base_uri}/#{@version_api}/#{path}")
       uri.query = URI.encode_www_form(data)
@@ -50,7 +49,16 @@ module Datawow
 
     def build_request(method, uri, token)
       request = {}
-      token ||= Datawow.project_key
+
+      token = if Datawow.respond_to?(:project_key)
+                Datawow.project_key
+              else
+                token
+              end
+
+      if (token || '').empty?
+        raise ArgumentError, 'project\'s token has missed. To config about token check our document'
+      end
 
       case method
       when :POST
@@ -71,7 +79,7 @@ module Datawow
       {
         image: 'http://localhost:3001/api',
         ai: 'https://kiyo-image.datawow.io',
-        text: 'https://kiyo-text.datawow.io',
+        text: 'https://kiyo-text-staging.datawow.io/api',
         video: 'https://kiyo-image.datawow.io'
       }[type]
     end

@@ -4,7 +4,7 @@ module Datawow
   module Interface
     # :nodoc:
     def all(options = {})
-      connector.list(path, options, @token)
+      connector.get(path, options, @token)
     end
 
     def create(options)
@@ -12,18 +12,13 @@ module Datawow
     end
 
     def find_by(options = {})
-      options[:token] ||= Datawow.project_key
-      connection.get(path(true), options)
+      connector.get(path, options, @token)
     end
 
     private
 
-    def connection
-      @connection ||= Connection.new('image')
-    end
-
     def connector
-      @connection ||= Connector.new(type: :image)
+      @connection ||= Connector.new(type: @type)
     end
   end
 end

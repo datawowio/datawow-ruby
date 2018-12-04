@@ -9,16 +9,13 @@ module Datawow
 
     def initialize
       @token = nil
+      @type = :image
     end
 
     private
 
-    def path(find = false)
-      if find
-        'images/closed_question'
-      else
-        'images/closed_questions'
-      end
+    def path
+      'images/closed_questions'
     end
   end
 end
