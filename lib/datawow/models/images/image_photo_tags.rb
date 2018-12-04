@@ -1,33 +1,21 @@
+# frozen_string_literal: true
+
 module Datawow
   # :nodoc:
   class ImagePhotoTag
-    def all(options = {})
-      options[:token] ||= Datawow.project_key
-      connection.get(path, options)
-    end
+    include Datawow::Models::Interface
 
-    def create(options = {})
-      options[:token] ||= Datawow.project_key
-      connection.post(path,  options)
-    end
+    attr_writer :token
 
-    def find_by(options = {})
-      options[:token] ||= Datawow.project_key
-      connection.get(path(true), options)
+    def initialize
+      @token = nil
+      @type = :image
     end
 
     private
 
-    def connection
-      @connection ||= Connection.new('image')
-    end
-
-    def path(find = false)
-      if find
-        '/images/photo_tag'
-      else
-        '/images/photo_tags'
-      end
+    def path
+      '/images/photo_tags'
     end
   end
 end
