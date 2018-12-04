@@ -6,7 +6,7 @@ require_relative 'datawow/connection'
 require_relative 'datawow/connector'
 require_relative 'datawow/error'
 require_relative 'datawow/version'
-require_relative 'datawow/interface'
+require_relative 'datawow/models/interface'
 
 require_relative 'datawow/models/images/image_closed_questions'
 require_relative 'datawow/models/images/image_photo_tags'

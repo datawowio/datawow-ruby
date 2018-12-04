@@ -3,7 +3,7 @@
 module Datawow
   # :nodoc:
   class TextConversation
-    include Datawow::Interface
+    include Datawow::Models::Interface
 
     attr_writer :token
 
