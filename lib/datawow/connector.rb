@@ -18,15 +18,14 @@ module Datawow
       base_uri = base_point(@type)
       uri = URI.parse("#{base_uri}/#{@version_api}/#{path}")
       https = Net::HTTP.new(uri.host, uri.port)
-      # https.use_ssl = true
+      https.use_ssl = true
 
       request = build_request(:POST, uri, token)
       request.set_form_data(data)
       response = https.request(request)
-      result = handle_response(response)
-      body = JSON.parse result.body
+      body = JSON.parse response.body
 
-      Response.new(body['data'], result.code, result.message, body['meta'], 1)
+      Response.new(body['data'], response.code, body['meta']['message'], body['meta'], 1)
     end
 
     def get(path, data = {}, token = '')
@@ -35,14 +34,13 @@ module Datawow
       uri.query = URI.encode_www_form(data)
 
       https = Net::HTTP.new(uri.host, uri.port)
-      # https.use_ssl = true
+      https.use_ssl = true
 
       request = build_request(:GET, uri, token)
       response = https.request(request)
-      result = handle_response(response)
-      body = JSON.parse result.body
+      body = JSON.parse response.body
 
-      Response.new(body['data'], result.code, result.message, body['meta'], body['meta']['total_count'])
+      Response.new(body['data'], response.code, body['meta']['message'], body['meta'], body['meta']['total_count'])
     end
 
     private
@@ -77,20 +75,11 @@ module Datawow
 
     def base_point(type)
       {
-        image: 'http://localhost:3001/api',
-        ai: 'https://kiyo-image.datawow.io',
+        image: 'https://kiyo-image.datawow.io/api',
+        ai: 'https://kiyo-image.datawow.io/api',
         text: 'https://kiyo-text-staging.datawow.io/api',
-        video: 'https://kiyo-image.datawow.io'
+        video: 'https://kiyo-image.datawow.io/api'
       }[type]
-    end
-
-    def handle_response(response)
-      case response
-      when Net::HTTPSuccess
-        response
-      else
-        response.value
-      end
     end
   end
 end
