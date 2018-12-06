@@ -15,7 +15,7 @@ module Datawow
     private
 
     def path
-      '/images/choices'
+      'images/choices'
     end
   end
 end

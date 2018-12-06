@@ -15,7 +15,7 @@ module Datawow
     private
 
     def path
-      '/images/messages'
+      'images/messages'
     end
   end
 end

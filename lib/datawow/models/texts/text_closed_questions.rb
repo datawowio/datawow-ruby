@@ -15,7 +15,7 @@ module Datawow
     private
 
     def path
-      '/text/text_closed_questions'
+      'text/text_closed_questions'
     end
   end
 end

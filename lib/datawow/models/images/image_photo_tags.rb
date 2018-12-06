@@ -15,7 +15,7 @@ module Datawow
     private
 
     def path
-      '/images/photo_tags'
+      'images/photo_tags'
     end
   end
 end

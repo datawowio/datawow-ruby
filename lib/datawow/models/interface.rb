@@ -8,7 +8,7 @@ module Datawow
       end
 
       def create(options)
-        connector.create(path, options, @token)
+        connector.post(path, options, @token)
       end
 
       def find_by(options = {})

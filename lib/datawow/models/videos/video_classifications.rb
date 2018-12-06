@@ -15,7 +15,7 @@ module Datawow
     private
 
     def path
-      '/videos/closed_questions'
+      'videos/closed_questions'
     end
   end
 end

@@ -15,7 +15,7 @@ module Datawow
     private
 
     def path
-      '/prime/predictions'
+      'prime/predictions'
     end
   end
 end

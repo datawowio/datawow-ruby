@@ -15,7 +15,7 @@ module Datawow
     private
 
     def path
-      '/text/text_conversations'
+      'text/text_conversations'
     end
   end
 end

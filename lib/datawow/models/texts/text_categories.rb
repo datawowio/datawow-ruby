@@ -15,7 +15,7 @@ module Datawow
     private
 
     def path
-      '/text/text_categories'
+      'text/text_categories'
     end
   end
 end
