@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require File.expand_path('faraday/raise_http_exception.rb', __dir__)
 require File.expand_path('client_response.rb', __dir__)
 
 module Datawow
   # :nodoc:
   class Connection
-    def initialize(model = nil, version_api = '/api/v1')
-      @model = model.to_sym
+    def initialize(model:, version_api: 'v1')
+      @model = model
       @version_api = version_api
     end
 
@@ -86,10 +88,10 @@ module Datawow
 
     def base_point
       options = {
-        image: 'https://kiyo-image.datawow.io',
-        ai: 'https://kiyo-image.datawow.io',
-        text: 'https://kiyo-text.datawow.io',
-        video: 'https://kiyo-image.datawow.io'
+        image: 'https://kiyo-image.datawow.io/api/',
+        ai: 'https://kiyo-image.datawow.io/api/',
+        text: 'https://kiyo-text.datawow.io/api/',
+        video: 'https://kiyo-image.datawow.io/api/'
       }
       options[@model]
     end
