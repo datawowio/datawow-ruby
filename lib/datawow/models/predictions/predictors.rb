@@ -10,6 +10,7 @@ module Datawow
     def initialize
       @token = nil
       @type = :ai
+      @query_str = false
     end
 
     private

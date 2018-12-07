@@ -28,10 +28,18 @@ module Datawow
       Response.new(body['data'], response.code, body['meta']['message'], body['meta'], 1)
     end
 
-    def get(path, data = {}, token = '')
+    def get(path, data = {}, token = '', query_str = true)
       base_uri = base_point(@type)
-      uri = URI.parse("#{base_uri}/#{@version_api}/#{path}")
-      uri.query = URI.encode_www_form(data)
+      url_base = "#{base_uri}/#{@version_api}/#{path}"
+      uri = ''
+
+      if query_str
+        uri = URI.parse(url_base)
+        uri.query = URI.encode_www_form(data)
+      else
+        url_base = "#{url_base}/#{data[:id]}"
+        uri = URI.parse(url_base)
+      end
 
       https = Net::HTTP.new(uri.host, uri.port)
       https.use_ssl = true
@@ -76,8 +84,8 @@ module Datawow
     def base_point(type)
       {
         image: 'https://kiyo-image.datawow.io/api',
-        ai: 'https://kiyo-image.datawow.io/api',
-        text: 'https://kiyo-text-staging.datawow.io/api',
+        ai:    'https://kiyo-image.datawow.io/api',
+        text:  'https://kiyo-text.datawow.io/api',
         video: 'https://kiyo-image.datawow.io/api'
       }[type]
     end

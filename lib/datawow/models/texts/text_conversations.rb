@@ -10,6 +10,7 @@ module Datawow
     def initialize
       @token = nil
       @type = :text
+      @query_str = false
     end
 
     private

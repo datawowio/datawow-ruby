@@ -9,7 +9,8 @@ module Datawow
 
     def initialize
       @token = nil
-      @type = :text
+      @type = :video
+      @query_str = false
     end
 
     private

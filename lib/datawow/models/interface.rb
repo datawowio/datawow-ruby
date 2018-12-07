@@ -12,7 +12,8 @@ module Datawow
       end
 
       def find_by(options = {})
-        connector.get(path, options, @token)
+        @query_str = true if @query_str.nil?
+        connector.get(path, options, @token, @query_str)
       end
 
       private
