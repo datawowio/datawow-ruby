@@ -22,11 +22,7 @@ require_relative 'datawow/models/videos/video_classifications'
 
 # :nodoc:
 module Datawow
-<<<<<<< HEAD
   module_function
-=======
-  extend self
->>>>>>> master
 
   attr_accessor :project_key
 
