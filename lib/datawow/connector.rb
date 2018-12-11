@@ -18,7 +18,7 @@ module Datawow
       base_uri = base_point(@type)
       uri = URI.parse("#{base_uri}/#{@version_api}/#{path}")
       https = Net::HTTP.new(uri.host, uri.port)
-      https.use_ssl = true
+      https.use_ssl = true if base_uri.include? 'https'
 
       request = build_request(:POST, uri, token)
       request.set_form_data(data)
@@ -42,7 +42,7 @@ module Datawow
       end
 
       https = Net::HTTP.new(uri.host, uri.port)
-      https.use_ssl = true
+      https.use_ssl = true if base_uri.include? 'https'
 
       request = build_request(:GET, uri, token)
       response = https.request(request)
@@ -55,7 +55,6 @@ module Datawow
 
     def build_request(method, uri, token)
       request = {}
-
       token = if Datawow.respond_to?(:project_key)
                 Datawow.project_key
               else

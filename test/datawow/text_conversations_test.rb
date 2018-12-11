@@ -27,7 +27,7 @@ module Datawow
     end
 
     def test_find
-      stub_request(:get, "#{TEXT_CONVERSATION_URL}/1")
+      stub_request(:get, "#{TEXT_CONVERSATION_URL}?id=1")
         .to_return(body: JSON.generate(text_closed_question), status: 200)
       response = model.find_by(id:1)
 

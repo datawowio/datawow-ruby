@@ -27,7 +27,7 @@ module Datawow
     end
 
     def test_find
-      stub_request(:get, "#{TEXT_CATEGORY_URL}/1")
+      stub_request(:get, "#{TEXT_CATEGORY_URL}?id=1")
         .to_return(body: JSON.generate(text_category), status: 200)
       response = model.find_by(id: '1')
 
