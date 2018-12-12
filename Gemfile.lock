@@ -54,6 +54,3 @@ DEPENDENCIES
   rake (~> 12.3)
   simplecov (~> 0.15.1)
   webmock (~> 3.3)
-
-BUNDLED WITH
-   1.17.1
