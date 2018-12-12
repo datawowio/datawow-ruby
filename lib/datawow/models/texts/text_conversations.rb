@@ -10,12 +10,7 @@ module Datawow
     def initialize
       @token = nil
       @type = :text
-    end
-
-    private
-
-    def path
-      'text/text_conversations'
+      @path = 'text/text_conversations'
     end
   end
 end

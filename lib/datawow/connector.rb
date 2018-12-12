@@ -9,43 +9,41 @@ require File.expand_path('client_response.rb', __dir__)
 module Datawow
   # :nodoc:
   class Connector
-    def initialize(type:, version_api: 'v1')
+    def initialize(path, type, token: '', version_api: 'v1')
       @version_api = version_api
       @type = type
+      @path = path
+      @token = token
+      @method = :GET
     end
 
-    def post(path, data = {}, token = '')
-      base_uri = base_point(@type)
-      uri = URI.parse("#{base_uri}/#{@version_api}/#{path}")
-      https = Net::HTTP.new(uri.host, uri.port)
-      https.use_ssl = true if base_uri.include? 'https'
-
-      request = build_request(:POST, uri, token)
-      request.set_form_data(data)
-      response = https.request(request)
+    def post(data = {})
+      @method = :POST
+      response = send_request(data)
       body = JSON.parse response.body
 
       Response.new(body['data'], response.code, body['meta']['message'], body['meta'], 1)
     end
 
-    def get(path, data = {}, token = '', query_str = true)
-      base_uri = base_point(@type)
-      url_base = "#{base_uri}/#{@version_api}/#{path}"
-      uri = ''
+    def get(data = {}, query_str = true)
+      @method = :GET
+      response = send_request(data, query_str)
+      body = JSON.parse response.body
 
-      if query_str
-        uri = URI.parse(url_base)
-        uri.query = URI.encode_www_form(data)
-      else
-        url_base = "#{url_base}/#{data[:id]}"
-        uri = URI.parse(url_base)
-      end
+      Response.new(body['data'], response.code, body['meta']['message'], body['meta'], body['meta']['total_count'])
+    end
 
-      https = Net::HTTP.new(uri.host, uri.port)
-      https.use_ssl = true if base_uri.include? 'https'
+    def put(data = {})
+      @method = :PUT
+      response = send_request(data)
+      body = JSON.parse response.body
 
-      request = build_request(:GET, uri, token)
-      response = https.request(request)
+      Response.new(body['data'], response.code, body['meta']['message'], body['meta'], 1)
+    end
+
+    def delete(data = {}, query_str = true)
+      @method = :DELETE
+      response = send_request(data, query_str)
       body = JSON.parse response.body
 
       Response.new(body['data'], response.code, body['meta']['message'], body['meta'], body['meta']['total_count'])
@@ -53,19 +51,40 @@ module Datawow
 
     private
 
-    def build_request(method, uri, token)
+    def send_request(data = {}, query_str = true)
+      base_uri = base_point(@type)
+      url_base = "#{base_uri}/#{@version_api}/#{@path}"
+      uri = URI.parse(url_base)
+
+      if @method == :GET
+        if query_str
+          uri.query = URI.encode_www_form(data)
+        else
+          url_base = "#{url_base}/#{data[:id]}"
+          uri = URI.parse(url_base)
+        end
+      end
+
+      https = Net::HTTP.new(uri.host, uri.port)
+      https.use_ssl = true if base_uri.include? 'https'
+      request = build_request(uri)
+      request.set_form_data(data)
+      response = https.request(request)
+    end
+
+    def build_request(uri)
       request = {}
       token = if Datawow.respond_to?(:project_key)
                 Datawow.project_key
               else
-                token
+                @token
               end
 
       if (token || '').empty?
         raise ArgumentError, 'project\'s token has missed. To config about token check our document'
       end
 
-      case method
+      case @method
       when :POST
         request = Net::HTTP::Post.new(uri.request_uri)
       when :GET

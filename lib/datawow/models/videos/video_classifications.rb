@@ -11,12 +11,7 @@ module Datawow
       @token = nil
       @type = :video
       @query_str = false
-    end
-
-    private
-
-    def path
-      'videos/closed_questions'
+      @path = 'videos/closed_questions'
     end
   end
 end

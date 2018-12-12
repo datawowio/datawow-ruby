@@ -11,12 +11,8 @@ module Datawow
       @token = nil
       @type = :ai
       @query_str = false
-    end
 
-    private
-
-    def path
-      'prime/predictions'
+      @path = 'prime/predictions'
     end
   end
 end

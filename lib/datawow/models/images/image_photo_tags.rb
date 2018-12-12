@@ -10,12 +10,7 @@ module Datawow
     def initialize
       @token = nil
       @type = :image
-    end
-
-    private
-
-    def path
-      'images/photo_tags'
+      @path ='images/photo_tags'
     end
   end
 end

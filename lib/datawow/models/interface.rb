@@ -4,22 +4,22 @@ module Datawow
   module Models
     module Interface
       def all(options = {})
-        connector.get(path, options, @token)
+        connector.get(options)
       end
 
       def create(options)
-        connector.post(path, options, @token)
+        connector.post(options)
       end
 
       def find_by(options = {})
         @query_str = true if @query_str.nil?
-        connector.get(path, options, @token, @query_str)
+        connector.get(options, @query_str)
       end
 
       private
 
       def connector
-        @connection ||= Connector.new(type: @type)
+        @connection ||= Connector.new(@path, @type, token: @token)
       end
     end
   end

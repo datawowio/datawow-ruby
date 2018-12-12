@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 require 'test_helper'
 
 module Datawow
@@ -10,7 +9,7 @@ module Datawow
       response = model.all
 
       assert_instance_of(Response, response)
-      assert_equal("200", response.status)
+      assert_equal('200', response.status)
       refute_nil(response.data)
       refute_nil(response.meta)
     end
@@ -21,7 +20,7 @@ module Datawow
       response = model.create(options)
 
       assert_instance_of(Response, response)
-      assert_equal("200", response.status)
+      assert_equal('200', response.status)
       refute_nil(response.data)
       refute_nil(response.meta)
     end
@@ -32,7 +31,7 @@ module Datawow
       response = model.find_by(id: 'test')
 
       assert_instance_of(Response, response)
-      assert_equal("200", response.status)
+      assert_equal('200', response.status)
       refute_nil(response.data)
       refute_nil(response.meta)
     end
