@@ -90,9 +90,9 @@ module Datawow
       when :GET
         request = Net::HTTP::Get.new(uri.request_uri)
       when :PUT
-        request = Net::HTTP::Delete.new(uri.request_uri)
-      when :DELETE
         request = Net::HTTP::Put.new(uri.request_uri)
+      when :DELETE
+        request = Net::HTTP::Delete.new(uri.request_uri)
       else
         raise ArgumentError, 'HTTP method is not exist, We allowed GET, POST, PUT, DELET only'
       end
