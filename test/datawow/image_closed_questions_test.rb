@@ -1,38 +1,47 @@
+# frozen_string_literal: true
 require 'test_helper'
 
 module Datawow
   class ImageClosedQuestionTest < TestBase
     def test_all
       stub_request(:get, IMAGE_CLOSED_QUESTIONS_URL)
-        .with(query: { token: options[:token] })
         .to_return(body: JSON.generate(image_closed_questions), status: 200)
-      response = ImageClosedQuestion.new.all(options)
+      response = model.all
+
       assert_instance_of(Response, response)
-      assert_equal(200, response.status)
+      assert_equal('200', response.status)
       refute_nil(response.data)
       refute_nil(response.meta)
     end
 
     def test_create
       stub_request(:post, IMAGE_CLOSED_QUESTIONS_URL)
-        .with(headers: { Authorization: options[:token] })
         .to_return(body: JSON.generate(image_closed_question), status: 200)
-      response = ImageClosedQuestion.new.create(options)
+      response = model.create(options)
+
       assert_instance_of(Response, response)
-      assert_equal(200, response.status)
+      assert_equal('200', response.status)
       refute_nil(response.data)
       refute_nil(response.meta)
     end
 
     def test_find
-      stub_request(:get, IMAGE_CLOSED_QUESTION_URL)
-        .with(query: { token: options[:token] })
+      stub_request(:get, "#{IMAGE_CLOSED_QUESTIONS_URL}?id=test")
         .to_return(body: JSON.generate(image_closed_question), status: 200)
-      response = ImageClosedQuestion.new.find_by(options)
+      response = model.find_by(id: 'test')
+
       assert_instance_of(Response, response)
-      assert_equal(200, response.status)
+      assert_equal('200', response.status)
       refute_nil(response.data)
       refute_nil(response.meta)
+    end
+
+    private
+
+    def model
+      @model ||= ImageClosedQuestion.new
+      @model.token = 'test'
+      @model
     end
   end
 end

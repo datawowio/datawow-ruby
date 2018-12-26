@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require File.expand_path('faraday/raise_http_exception.rb', __dir__)
 require File.expand_path('client_response.rb', __dir__)
 

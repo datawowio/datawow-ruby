@@ -1,34 +1,16 @@
+# frozen_string_literal: true
+
 module Datawow
   # :nodoc:
   class ImageClosedQuestion
+    include Datawow::Models::Interface
 
-    def all(options = {})
-      options[:token] ||= Datawow.project_key
-      connection.get(path, options)
-    end
+    attr_writer :token
 
-    def create(options = {})
-      options[:token] ||= Datawow.project_key
-      connection.post(path, options)
-    end
-
-    def find_by(options = {})
-      options[:token] ||= Datawow.project_key
-      connection.get(path(true), options)
-    end
-
-    private
-
-    def connection
-      @connection ||= Connection.new(model: :image)
-    end
-
-    def path(find = false)
-      if find
-        '/images/closed_question'
-      else
-        '/images/closed_questions'
-      end
+    def initialize
+      @token = nil
+      @type = :image
+      @path = 'images/closed_questions'
     end
   end
 end

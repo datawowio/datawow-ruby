@@ -1,36 +1,16 @@
+# frozen_string_literal: true
+
 module Datawow
   # :nodoc:
   class TextConversation
-    def all(options = {})
-      options[:token] ||= Datawow.project_key
-      connection.get(path, options)
-    end
+    include Datawow::Models::Interface
 
-    def create(options = {})
-      options[:token] ||= Datawow.project_key
-      connection.post(path, options)
-    end
+    attr_writer :token
 
-    #  if endpoint is params you must set
-    #  options[:path_param] = true
-    def find_by(options = {})
-      options[:token] ||= Datawow.project_key
-      options[:path_param] = true
-      connection.get(path(options[:id]), options)
-    end
-
-    private
-
-    def connection
-      @connection ||= Connection.new(model: :text)
-    end
-
-    def path(id = nil)
-      if id.nil?
-        '/text/text_conversations'
-      else
-        "/text/text_conversations/#{id}"
-      end
+    def initialize
+      @token = nil
+      @type = :text
+      @path = 'text/text_conversations'
     end
   end
 end
