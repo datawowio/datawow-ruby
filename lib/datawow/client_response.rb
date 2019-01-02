@@ -5,7 +5,7 @@ module Datawow
 
     def initialize(data, response_code = '', response_message = 'success', meta = nil, total = 0)
       @data = data
-      @status = response_code
+      @status = response_code.to_i
       @message = response_message
       @meta = meta
       @total = total unless total.nil?
