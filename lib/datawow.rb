@@ -12,6 +12,7 @@ require_relative 'datawow/models/images/image_closed_questions'
 require_relative 'datawow/models/images/image_photo_tags'
 require_relative 'datawow/models/images/image_choices'
 require_relative 'datawow/models/images/image_messages'
+require_relative 'datawow/models/images/nanameue_human'
 require_relative 'datawow/models/predictions/predictors'
 
 require_relative 'datawow/models/texts/text_categories'
@@ -22,7 +23,7 @@ require_relative 'datawow/models/videos/video_classifications'
 
 # :nodoc:
 module Datawow
-  module_function
+  extend self
 
   attr_accessor :project_key
 
@@ -65,6 +66,10 @@ module Datawow
 
     def prediction
       Predictor.new
+    end
+
+    def nanameue_human
+      NanameueHuman.new
     end
   end
 end
