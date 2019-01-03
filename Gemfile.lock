@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    datawow (1.2.1)
+    datawow (1.2.2)
       json (~> 1.8, >= 1.8.3)
 
 GEM
