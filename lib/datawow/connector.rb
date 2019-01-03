@@ -3,6 +3,7 @@
 require 'net/http'
 require 'net/https'
 require 'uri'
+require 'json'
 
 require File.expand_path('client_response.rb', __dir__)
 
