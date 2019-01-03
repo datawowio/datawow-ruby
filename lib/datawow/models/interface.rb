@@ -19,7 +19,7 @@ module Datawow
       private
 
       def connector
-        @connection ||= Connector.new(@path, @type, token: @token)
+        @connection ||= Connector.new(@path, @type, token: @project_key)
       end
     end
   end

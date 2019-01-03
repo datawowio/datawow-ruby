@@ -5,10 +5,10 @@ module Datawow
   class Predictor
     include Datawow::Models::Interface
 
-    attr_writer :token
+    attr_writer :project_key
 
     def initialize
-      @token = nil
+      @project_key = nil
       @type = :ai
       @query_str = false
 

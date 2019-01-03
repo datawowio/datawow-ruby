@@ -5,10 +5,10 @@ module Datawow
   class VideoClassification
     include Datawow::Models::Interface
 
-    attr_writer :token
+    attr_writer :project_key
 
     def initialize
-      @token = nil
+      @project_key = nil
       @type = :video
       @query_str = false
       @path = 'videos/closed_questions'

@@ -76,6 +76,9 @@ Datawow.[class].all({token: '_token'})
 ```
 ---
 ## Nanameue with Consensus
+##### There are 2 ways to use the library 
+
+Firstly, __dynamic token__. if you have multiple project to work with, You could call library by using module name
 #### `create`
 ```ruby
 Datawow::NanameueHuman.new('_token').create({data: "image URL"})
@@ -89,6 +92,35 @@ Datawow::NanameueHuman.new('_token').find_by({id: "_image_id"})
 #### `all`
 ```ruby
 Datawow::NanameueHuman.new('_token').all({page: '_page', per_page: '_per_page'})
+```
+
+or another way
+
+```ruby
+model = Datawow::NanameueHuman.new
+model.project_key = '_token'
+model.create()
+```
+
+Secondly, we have initiated each modules since the library being called, so you could call from package name
+##### Setting project key
+```ruby
+Datawow.project_key = '_token'
+```
+##### Start workgin with a provieded method
+#### `create`
+```ruby
+Datawow.nanameue_human.create({data: "image URL"})
+```
+
+#### `find_by`
+```ruby
+Datawow.nanameue_human.find_by({id: "_image_id"})
+```
+
+#### `all`
+```ruby
+Datawow.nanameue_human.all({page: '_page', per_page: '_per_page'})
 ```
 
 # Setting default token

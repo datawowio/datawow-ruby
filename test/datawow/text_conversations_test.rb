@@ -41,7 +41,7 @@ module Datawow
 
     def model
       @model ||= TextConversation.new
-      @model.token = 'test'
+      @model.project_key = 'test'
       @model
     end
   end

@@ -76,11 +76,7 @@ module Datawow
 
     def build_request(uri)
       request = {}
-      token = if Datawow.project_key
-                Datawow.project_key
-              else
-                @token
-              end
+      token = @token || Datawow.project_key
 
       if (token || '').empty?
         raise ArgumentError, 'project\'s token has missed. To config about token check our document'

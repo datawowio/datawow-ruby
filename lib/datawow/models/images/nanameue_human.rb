@@ -5,10 +5,10 @@ module Datawow
   class NanameueHuman
     include Datawow::Models::Interface
 
-    attr_writer :token
+    attr_writer :project_key
 
     def initialize(token = nil)
-      @token = token
+      @project_key = token
       @type = :image
       @path = 'jobs/nanameue/consensuses'
     end
