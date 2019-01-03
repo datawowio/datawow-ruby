@@ -41,7 +41,7 @@ module Datawow
 
     def model
       @model ||= VideoClassification.new
-      @model.token = 'test'
+      @model.project_key = 'test'
       @model
     end
   end

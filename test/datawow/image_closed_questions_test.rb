@@ -40,7 +40,7 @@ module Datawow
 
     def model
       @model ||= ImageClosedQuestion.new
-      @model.token = 'test'
+      @model.project_key = 'test'
       @model
     end
   end
