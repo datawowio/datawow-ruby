@@ -78,17 +78,17 @@ Datawow.[class].all({token: '_token'})
 ## Nanameue with Consensus
 #### `create`
 ```ruby
-Datawow::NanameueHuman.new(token: '_token').create({data: "image URL"})
+Datawow::NanameueHuman.new('_token').create({data: "image URL"})
 ```
 
 #### `find_by`
 ```ruby
-Datawow::NanameueHuman.new(token: '_token').find_by({id: "_image_id"})
+Datawow::NanameueHuman.new('_token').find_by({id: "_image_id"})
 ```
 
 #### `all`
 ```ruby
-Datawow::NanameueHuman.new(token: '_token').all({page: '_page', per_page: '_per_page'})
+Datawow::NanameueHuman.new('_token').all({page: '_page', per_page: '_per_page'})
 ```
 
 # Setting default token
