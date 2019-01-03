@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    datawow (1.1.0)
+    datawow (1.2.0)
       faraday (~> 0.13.1, >= 0.13.1)
       faraday_middleware (~> 0.12.2, >= 0.12.2)
       json (~> 1.8, >= 1.8.3)
@@ -54,3 +54,6 @@ DEPENDENCIES
   rake (~> 12.3)
   simplecov (~> 0.15.1)
   webmock (~> 3.3)
+
+BUNDLED WITH
+   1.17.1
