@@ -5,7 +5,7 @@ module Datawow
   class NanameueHumanTest < TestBase
     def test_all
       stub_request(:get, NANAMEUE_HUMAN_URL)
-        .to_return(body: JSON.generate(nanameue_humen), status: 200)
+        .to_return(body: JSON.generate(nanameue_humans), status: 200)
       response = model.all
 
       assert_instance_of(Response, response)

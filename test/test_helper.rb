@@ -13,7 +13,7 @@ class TestBase < Minitest::Test
               :image_closed_questions, :image_message, :image_messages, :image_photo_tag,
               :image_photo_tags, :prediction, :predictions, :videos, :video,
               :text_categories, :text_category, :text_conversations, :text_conversation,
-              :text_closed_questions, :text_closed_question, :nanameue_human, :nanameue_humen
+              :text_closed_questions, :text_closed_question, :nanameue_human, :nanameue_humans
 
   IMAGE_CHOICES_URL          = 'https://kiyo-image.datawow.io/api/v1/images/choices'.freeze
   IMAGE_CHOICE_URL           = 'https://kiyo-image.datawow.io/api/v1/images/choice'.freeze
@@ -45,7 +45,7 @@ class TestBase < Minitest::Test
     @videos                 = FileReader.new('test/fixtures/video_classification/all.json').read_json
     @video                  = FileReader.new('test/fixtures/video_classification/create.json').read_json
     @nanameue_human         = FileReader.new('test/fixtures/nanameue_human/create.json').read_json
-    @nanameue_humen         = FileReader.new('test/fixtures/nanameue_human/all.json').read_json
+    @nanameue_humans        = FileReader.new('test/fixtures/nanameue_human/all.json').read_json
     @text_category          = FileReader.new('test/fixtures/text_category/create.json').read_json
     @text_categories        = FileReader.new('test/fixtures/text_category/all.json').read_json
     @text_conversation      = FileReader.new('test/fixtures/text_conversation/create.json').read_json
