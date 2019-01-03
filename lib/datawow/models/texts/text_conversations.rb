@@ -5,10 +5,10 @@ module Datawow
   class TextConversation
     include Datawow::Models::Interface
 
-    attr_writer :token
+    attr_writer :project_key
 
     def initialize
-      @token = nil
+      @project_key = nil
       @type = :text
       @path = 'text/text_conversations'
     end

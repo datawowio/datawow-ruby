@@ -5,10 +5,10 @@ module Datawow
   class ImagePhotoTag
     include Datawow::Models::Interface
 
-    attr_writer :token
+    attr_writer :project_key
 
     def initialize
-      @token = nil
+      @project_key = nil
       @type = :image
       @path ='images/photo_tags'
     end
