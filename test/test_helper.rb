@@ -13,7 +13,8 @@ class TestBase < Minitest::Test
               :image_closed_questions, :image_message, :image_messages, :image_photo_tag,
               :image_photo_tags, :prediction, :predictions, :videos, :video,
               :text_categories, :text_category, :text_conversations, :text_conversation,
-              :text_closed_questions, :text_closed_question, :nanameue_human, :nanameue_humans
+              :text_closed_questions, :text_closed_question, :nanameue_human, :nanameue_humans,
+              :text_ja, :text_jas
 
   IMAGE_CHOICES_URL          = 'https://kiyo-image.datawow.io/api/v1/images/choices'.freeze
   IMAGE_CHOICE_URL           = 'https://kiyo-image.datawow.io/api/v1/images/choice'.freeze
@@ -30,6 +31,7 @@ class TestBase < Minitest::Test
   TEXT_CATEGORY_URL          = 'https://kiyo-text.datawow.io/api/v1/text/text_categories'.freeze
   TEXT_CONVERSATION_URL      = 'https://kiyo-text.datawow.io/api/v1/text/text_conversations'.freeze
   TEXT_CLOSED_QUESTION_URL   = 'https://kiyo-text.datawow.io/api/v1/text/text_closed_questions'.freeze
+  TEXT_JA_URL                = 'https://kiyo-text.datawow.io/api/v1/text_ai/text_ja'.freeze
 
   def setup
     @image_choices          = FileReader.new('test/fixtures/image_choice/all.json').read_json
@@ -52,6 +54,8 @@ class TestBase < Minitest::Test
     @text_conversations     = FileReader.new('test/fixtures/text_conversation/all.json').read_json
     @text_closed_question   = FileReader.new('test/fixtures/text_closed_question/create.json').read_json
     @text_closed_questions  = FileReader.new('test/fixtures/text_closed_question/all.json').read_json
+    @text_ja                = FileReader.new('test/fixtures/text_ja/create.json').read_json
+    @text_jas               = FileReader.new('test/fixtures/text_ja/all.json').read_json
     @options = {
       token: 'project token'
     }

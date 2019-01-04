@@ -15,6 +15,7 @@ require_relative 'datawow/models/predictions/predictors'
 require_relative 'datawow/models/texts/text_categories'
 require_relative 'datawow/models/texts/text_closed_questions'
 require_relative 'datawow/models/texts/text_conversations'
+require_relative 'datawow/models/texts/text_ja'
 
 require_relative 'datawow/models/videos/video_classifications'
 
@@ -43,6 +44,10 @@ module Datawow
 
     def text_conversation
       TextConversation.new
+    end
+
+    def text_ja
+      TextJa.new
     end
 
     def image_closed_question

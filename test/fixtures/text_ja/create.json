@@ -1,0 +1,28 @@
+{
+  "data": {
+    "id": "5c2eb38f0df256348de69a1f",
+    "created_at": "2019-01-04T08:14:55.372+07:00",
+    "custom_id": null,
+    "data": "foobar",
+    "processed_at": "2019-01-04T08:14:55.371+07:00",
+    "project_id": 202,
+    "results": {
+      "declined": 0.001,
+      "developing_model": {
+        "approved": 0.9909,
+        "pros-sexual": 0.0046,
+        "sns": 0.045
+      },
+      "pros_fasttext": 0.001,
+      "sexual_fasttext": 0.001,
+      "sexual_fasttext_romanji": 0.001,
+      "sns_fasttext": 0.001
+    },
+    "staff_id": 999998,
+    "status": "done"
+  },
+  "meta": {
+    "code": 201,
+    "message": "success"
+  }
+}
