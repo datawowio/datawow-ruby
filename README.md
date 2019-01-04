@@ -126,10 +126,14 @@ Datawow.nanameue_human.all({page: '_page', per_page: '_per_page'})
 ---
 
 ## Text AI Japanese
-#### `create`
-
+##### Set your project key
 ```ruby
-Datawow.text_ja.create({ data: 'フーバーバズ' })
+Datawow.project_key = '_token'
+```
+
+#### `create`
+```ruby
+Datawow.text_ja.create({ data: 'フーバーバズ', custom_id: 'custom_id', postback_method: 'GET', postback_url: 'https://datawow.io' })
 ```
 
 #### `find_by`
