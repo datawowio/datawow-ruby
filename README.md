@@ -48,6 +48,7 @@ There are 3 APIs for text class
 Datawow.text_closed_question
 Datawow.text_category
 Datawow.text_conversation
+Datawow.text_ja
 ```
 ---
 
@@ -76,7 +77,7 @@ Datawow.[class].all({token: '_token'})
 ```
 ---
 ## Nanameue with Consensus
-##### There are 2 ways to use the library 
+##### There are 2 ways to use the library
 
 Firstly, __dynamic token__. if you have multiple project to work with, You could call library by using module name
 #### `create`
@@ -107,7 +108,7 @@ Secondly, we have initiated each modules since the library being called, so you 
 ```ruby
 Datawow.project_key = '_token'
 ```
-##### Start workgin with a provieded method
+##### Start working with provided methods
 #### `create`
 ```ruby
 Datawow.nanameue_human.create({data: "image URL"})
@@ -121,6 +122,24 @@ Datawow.nanameue_human.find_by({id: "_image_id"})
 #### `all`
 ```ruby
 Datawow.nanameue_human.all({page: '_page', per_page: '_per_page'})
+```
+---
+
+## Text AI Japanese
+#### `create`
+
+```ruby
+Datawow.text_ja.create({ data: 'フーバーバズ' })
+```
+
+#### `find_by`
+```ruby
+Datawow.text_ja.find_by({ id: '_text_id' })
+```
+
+#### `all`
+```ruby
+Datawow.text_ja.all({page: '_page', per_page: '_per_page'})
 ```
 
 # Setting default token
