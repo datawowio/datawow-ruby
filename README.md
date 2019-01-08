@@ -9,7 +9,7 @@ HTTP RESTFul for calling DataWow APIs
 gem 'datawow', '~> 1.3.2'
 ```
 
-#### Generate setting
+### Rails project
 
 ```console
 $ rails generate datawow:install
@@ -23,14 +23,17 @@ The generator will install an initializer which describes ALL of library's confi
 To call our module use `Datawow` and follow by class of APIs which we're going to explain what API we have
 
 ## Class explanation
+These classes it's a instant method that we have prepare to you. You can use our provider or the recommanded way [read](#dynamic_method)
 #### Image classe `Datawow.image_*`
-There are 4 APIs for image class
+There are 4 APIs fo
 
+## instant method
 ```ruby
 Datawow.image_closed_question
 Datawow.image_photo_tag
 Datawow.image_choice
 Datawow.image_message
+Datawow.nanameue_human
 ```
 ---
 
@@ -50,6 +53,7 @@ Datawow.text_category
 Datawow.text_conversation
 Datawow.text_ja
 ```
+
 ---
 
 #### Prediction classe `Datawow.prediction`
@@ -58,52 +62,44 @@ There are 1 API for prediction class
 ```ruby
 Datawow.prediction
 ```
+
+Those method, it's a shortcut for calling these class
+```ruby
+Datawow::ImageClosedQuestion
+Datawow::PhotoTag
+Datawow::ImageChoice
+Datawow::ImageMessage
+Datawow::NanameueHuman
+Datawow::VideoClassification
+Datawow::TextClosedQuestion
+Datawow::TextCategory
+Datawow::TextConversation
+Datawow::TextJa
+Datawow::Prediction
+```
 ---
-## Calling APIs
+## Avalabile method for an APIs
 Every classes there are 3 function that is `create`, `find_by` and `all`
 #### `create`
 ```ruby
-Datawow.[class].create({data: "image URL", token: '_token'})
+Datawow.[class].create(data: {})
 ```
 
 #### `find_by`
 ```ruby
-Datawow.[class].find_by({id: "_image_id", token: '_token'})
+Datawow.[class].find_by({id: "_image_id"})
 ```
 
 #### `all`
 ```ruby
-Datawow.[class].all({token: '_token'})
+Datawow.[class].all()
 ```
+
+
 ---
 ## Nanameue with Consensus
-##### There are 2 ways to use the library
 
-Firstly, __dynamic token__. if you have multiple project to work with, You could call library by using module name
-#### `create`
-```ruby
-Datawow::NanameueHuman.new('_token').create({data: "image URL"})
-```
-
-#### `find_by`
-```ruby
-Datawow::NanameueHuman.new('_token').find_by({id: "_image_id"})
-```
-
-#### `all`
-```ruby
-Datawow::NanameueHuman.new('_token').all({page: '_page', per_page: '_per_page'})
-```
-
-or another way
-
-```ruby
-model = Datawow::NanameueHuman.new
-model.project_key = '_token'
-model.create()
-```
-
-Secondly, we have initiated each modules since the library being called, so you could call from package name
+We have initiated each modules since the library being called, so you could call from package that we provided [here](#class_explanation)
 ##### Setting project key
 ```ruby
 Datawow.project_key = '_token'
@@ -111,42 +107,39 @@ Datawow.project_key = '_token'
 ##### Start working with provided methods
 #### `create`
 ```ruby
-Datawow.nanameue_human.create({data: "image URL"})
+Datawow.[class].create({data: "image URL"})
 ```
 
 #### `find_by`
 ```ruby
-Datawow.nanameue_human.find_by({id: "_image_id"})
+Datawow.[class].find_by({id: "_image_id"})
 ```
 
 #### `all`
 ```ruby
-Datawow.nanameue_human.all({page: '_page', per_page: '_per_page'})
+Datawow.[class].all({page: '_page', per_page: '_per_page'})
 ```
 ---
 
-## Text AI Japanese
-##### Set your project key
+
+## Dynamically object with many token
+
+If you have many projects to work with. It's not proper to use above example to call our service. If you would like to create an object and change a token ([How to setting token]) dynamically, We perfer to use like above example
+
 ```ruby
-Datawow.project_key = '_token'
+Datawow::[class].new('_token').create({data: "image URL"})
+```
+or
+```ruby
+model = Datawow::[class].new
+model.project_key = '_token'
+model.create()
 ```
 
-#### `create`
-```ruby
-Datawow.text_ja.create({ data: 'フーバーバズ', custom_id: 'custom_id', postback_method: 'GET', postback_url: 'https://datawow.io' })
-```
+For available method find in [calling APIs](#calling_apis) section
 
-#### `find_by`
-```ruby
-Datawow.text_ja.find_by({ id: '_text_id' })
-```
 
-#### `all`
-```ruby
-Datawow.text_ja.all({page: '_page', per_page: '_per_page'})
-```
-
-# Setting default token
+# Setting default token for rails project
 
 If you have only one token that use on your project, you could config auto append or set token by default. This for Ruby On Rails project.
 
@@ -160,10 +153,6 @@ Datawow.setup do |config|
 end
 ```
 
-After configuration has been set. You can calling APIs by not insert token like this
-```ruby
-Datawow.[class].create({data: "image URL"})
-```
 The system will be looking for your token by automatically
 
 # Response
