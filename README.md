@@ -9,21 +9,21 @@ HTTP RESTFul for calling DataWow APIs
 gem 'datawow', '~> 1.3.2'
 ```
 
-### Rails project
+### Rails
 
 ```console
 $ rails generate datawow:install
 ```
 The generator will install an initializer which describes ALL of library's configuration options. It is *imperative* that you take a look at it. When you are done, you are ready to call it to any of your codes.
 
-**Note**: Our library work with Rails 4.1 or above
+**Note**: Rails 4.1 or above
 
 # Usage
 
 To call our module use `Datawow` and follow by class of APIs which we're going to explain what API we have
 
 ## Class explanation
-These classes it's a instant method that we have prepare to you. You can use our provider or the recommanded way [read](#dynamic_method)
+These classes it's a instant method that we have prepare to you. You can use our provider or the recommanded way [read](#dynamically_token_setting)
 #### Image classe `Datawow.image_*`
 There are 4 APIs fo
 
@@ -78,8 +78,8 @@ Datawow::TextJa
 Datawow::Prediction
 ```
 ---
-## Avalabile method for an APIs
-Every classes there are 3 function that is `create`, `find_by` and `all`
+## Avalabile method for APIs
+Every classes there are 3 functions that is `create`, `find_by` and `all`
 #### `create`
 ```ruby
 Datawow.[class].create(data: {})
@@ -97,7 +97,7 @@ Datawow.[class].all()
 
 
 ---
-## Nanameue with Consensus
+## Example
 
 We have initiated each modules since the library being called, so you could call from package that we provided [here](#class_explanation)
 ##### Setting project key
@@ -122,9 +122,9 @@ Datawow.[class].all({page: '_page', per_page: '_per_page'})
 ---
 
 
-## Dynamically object with many token
+## Dynamically token setting
 
-If you have many projects to work with. It's not proper to use above example to call our service. If you would like to create an object and change a token ([How to setting token]) dynamically, We perfer to use like above example
+If you have many projects to work with. It's not proper to use above example to call our services. If you would like to create an object and change a token dynamically, We perfer to use these example
 
 ```ruby
 Datawow::[class].new('_token').create({data: "image URL"})
@@ -136,7 +136,7 @@ model.project_key = '_token'
 model.create()
 ```
 
-For available method find in [calling APIs](#calling_apis) section
+For available method find in [calling APIs](#avalabile_method_for_apis) section
 
 
 # Setting default token for rails project
