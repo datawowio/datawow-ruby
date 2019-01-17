@@ -18,15 +18,15 @@ $ rails generate datawow:install
 
 # Usage
 
-To call our module use `Datawow` then follow by class of APIs which we're going to explain what API we have
+To call our module, use `Datawow` followed by any of the classes provided in our APIs
 
-## Class explanation
-These classes it's a instant method that we have prepared for you. You can use our provider or the recommanded method [read](#dynamically_token_setting) to using our APIs
+## Classes explanation
+These classes are instance methods we have created for you. You can use our provider or the recommended methods, [here](#dynamically_token_setting), when using our APIs
 
-#### Image classe `Datawow.image_*`
-There are 4 APIs fo
+#### Image classes `Datawow.image_*`
+There are 4 APIs for image class
 
-## instant method
+## instance method
 ```ruby
 Datawow.image_closed_question
 Datawow.image_photo_tag
@@ -55,14 +55,14 @@ Datawow.text_ja
 
 ---
 
-#### Prediction classe `Datawow.prediction`
+#### Prediction classes `Datawow.prediction`
 There are 1 API for prediction class
 
 ```ruby
 Datawow.prediction
 ```
 
-Those method, it's a shortcut for calling of these class
+Above methods are shortcuts for calling the following classes
 ```ruby
 Datawow::ImageClosedQuestion
 Datawow::PhotoTag
@@ -77,8 +77,8 @@ Datawow::TextJa
 Datawow::Prediction
 ```
 ---
-## Avalabile method for APIs
-Every classes there are 3 functions that is `create`, `find_by` and `all`
+## Available methods in our APIs
+There are 3 main functions for each class: `create`, `find_by` and `all`
 #### `create`
 ```ruby
 Datawow.[class].create(data: {})
@@ -99,11 +99,11 @@ Datawow.[class].all()
 ## Example
 
 Since the library being called. we have initiated each modules, so you could call from package that we provided [here](#class_explanation)
-##### Setting project key
+##### Setting the project key
 ```ruby
 Datawow.project_key = '_token'
 ```
-##### Start working with provided methods
+##### Working with the methods
 #### `create`
 ```ruby
 Datawow.[class].create({data: "image URL"})
@@ -121,9 +121,9 @@ Datawow.[class].all({page: '_page', per_page: '_per_page'})
 ---
 
 
-## Dynamically token setting
+## Dynamically setting the token
 
-If you have many projects to work with. It's not proper to use above example. If you would like to create an object and change a token dynamically, We perfer to use these example
+If you have many projects, we recommend using the following example instead of the one shown above if you would like to create an object and change its token dynamically
 
 ```ruby
 Datawow::[class].new('_token').create({data: "image URL"})
@@ -135,7 +135,7 @@ model.project_key = '_token'
 model.create()
 ```
 
-For available method find in [calling APIs](#avalabile_method_for_apis) section
+For available method, see [calling APIs](#avalabile_method_for_apis) section
 
 
 # Setting default token for rails project
@@ -152,12 +152,12 @@ end
 
 # Response
 
-Response is a module and it contain such as meta-data, message, status and data.
-#### Example of response module
+Response is a module and it contains data including: data, meta-data, message, and status
+#### Example of a response module
 ```ruby
 <Datawow::Response @status=200, @message="success" @meta={"code"=>200, "message"=>"success"}, @data={...}, />
 ```
-you can use data with call `data` property and you will be get data like a example below
+You can call the `data` property to get the data, which would return in the format as shown below
 
 ```json
 {
