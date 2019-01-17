@@ -98,7 +98,7 @@ Datawow.[class].all()
 ---
 ## Example
 
-Since the library being called. we have initiated each modules, so you could call from package that we provided [here](#class_explanation)
+After the library has been called for the first time, the associated modules will be initialized and you could then call using the package name instead. [here](#class_explanation)
 ##### Setting the project key
 ```ruby
 Datawow.project_key = '_token'
