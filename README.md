@@ -9,28 +9,30 @@ HTTP RESTFul for calling DataWow APIs
 gem 'datawow', '~> 1.3.2'
 ```
 
-#### Generate setting
+### Rails
 
 ```console
 $ rails generate datawow:install
 ```
-The generator will install an initializer which describes ALL of library's configuration options. It is *imperative* that you take a look at it. When you are done, you are ready to call it to any of your codes.
-
-**Note**: Our library work with Rails 4.1 or above
+**Note**: Rails 4.1 or above
 
 # Usage
 
-To call our module use `Datawow` and follow by class of APIs which we're going to explain what API we have
+To call our module, use `Datawow` followed by any of the classes provided in our APIs
 
-## Class explanation
-#### Image classe `Datawow.image_*`
+## Classes explanation
+These classes are instance methods we have created for you. You can use our provider or the recommended methods, [here](#dynamically_token_setting), when using our APIs
+
+#### Image classes `Datawow.image_*`
 There are 4 APIs for image class
 
+## instance method
 ```ruby
 Datawow.image_closed_question
 Datawow.image_photo_tag
 Datawow.image_choice
 Datawow.image_message
+Datawow.nanameue_human
 ```
 ---
 
@@ -50,105 +52,93 @@ Datawow.text_category
 Datawow.text_conversation
 Datawow.text_ja
 ```
+
 ---
 
-#### Prediction classe `Datawow.prediction`
+#### Prediction classes `Datawow.prediction`
 There are 1 API for prediction class
 
 ```ruby
 Datawow.prediction
 ```
+
+Above methods are shortcuts for calling the following classes
+```ruby
+Datawow::ImageClosedQuestion
+Datawow::PhotoTag
+Datawow::ImageChoice
+Datawow::ImageMessage
+Datawow::NanameueHuman
+Datawow::VideoClassification
+Datawow::TextClosedQuestion
+Datawow::TextCategory
+Datawow::TextConversation
+Datawow::TextJa
+Datawow::Prediction
+```
 ---
-## Calling APIs
-Every classes there are 3 function that is `create`, `find_by` and `all`
+## Available methods in our APIs
+There are 3 main functions for each class: `create`, `find_by` and `all`
 #### `create`
 ```ruby
-Datawow.[class].create({data: "image URL", token: '_token'})
+Datawow.[class].create(data: {})
 ```
 
 #### `find_by`
 ```ruby
-Datawow.[class].find_by({id: "_image_id", token: '_token'})
+Datawow.[class].find_by({id: "_image_id"})
 ```
 
 #### `all`
 ```ruby
-Datawow.[class].all({token: '_token'})
+Datawow.[class].all()
 ```
----
-## Nanameue with Consensus
-##### There are 2 ways to use the library
 
-Firstly, __dynamic token__. if you have multiple project to work with, You could call library by using module name
+
+---
+## Example
+
+After the library has been called for the first time, the associated modules will be initialized and you could then call using the package name instead. [here](#class_explanation)
+##### Setting the project key
+```ruby
+Datawow.project_key = '_token'
+```
+##### Working with the methods
 #### `create`
 ```ruby
-Datawow::NanameueHuman.new('_token').create({data: "image URL"})
+Datawow.[class].create({data: "image URL"})
 ```
 
 #### `find_by`
 ```ruby
-Datawow::NanameueHuman.new('_token').find_by({id: "_image_id"})
+Datawow.[class].find_by({id: "_image_id"})
 ```
 
 #### `all`
 ```ruby
-Datawow::NanameueHuman.new('_token').all({page: '_page', per_page: '_per_page'})
+Datawow.[class].all({page: '_page', per_page: '_per_page'})
 ```
+---
 
-or another way
+
+## Dynamically setting the token
+
+If you have many projects, we recommend using the following example instead of the one shown above if you would like to create an object and change its token dynamically
 
 ```ruby
-model = Datawow::NanameueHuman.new
+Datawow::[class].new('_token').create({data: "image URL"})
+```
+or
+```ruby
+model = Datawow::[class].new
 model.project_key = '_token'
 model.create()
 ```
 
-Secondly, we have initiated each modules since the library being called, so you could call from package name
-##### Setting project key
-```ruby
-Datawow.project_key = '_token'
-```
-##### Start working with provided methods
-#### `create`
-```ruby
-Datawow.nanameue_human.create({data: "image URL"})
-```
+For available method, see [calling APIs](#avalabile_method_for_apis) section
 
-#### `find_by`
-```ruby
-Datawow.nanameue_human.find_by({id: "_image_id"})
-```
 
-#### `all`
-```ruby
-Datawow.nanameue_human.all({page: '_page', per_page: '_per_page'})
-```
----
-
-## Text AI Japanese
-##### Set your project key
-```ruby
-Datawow.project_key = '_token'
-```
-
-#### `create`
-```ruby
-Datawow.text_ja.create({ data: 'フーバーバズ', custom_id: 'custom_id', postback_method: 'GET', postback_url: 'https://datawow.io' })
-```
-
-#### `find_by`
-```ruby
-Datawow.text_ja.find_by({ id: '_text_id' })
-```
-
-#### `all`
-```ruby
-Datawow.text_ja.all({page: '_page', per_page: '_per_page'})
-```
-
-# Setting default token
-
-If you have only one token that use on your project, you could config auto append or set token by default. This for Ruby On Rails project.
+# Setting default token for rails project
 
 `config/initializers/datawow.rb`
 
@@ -160,20 +150,14 @@ Datawow.setup do |config|
 end
 ```
 
-After configuration has been set. You can calling APIs by not insert token like this
-```ruby
-Datawow.[class].create({data: "image URL"})
-```
-The system will be looking for your token by automatically
-
 # Response
 
-Response is a module and it contain such as meta-data, message, status and data.
-#### Example of response module
+Response is a module and it contains data including: data, meta-data, message, and status
+#### Example of a response module
 ```ruby
 <Datawow::Response @status=200, @message="success" @meta={"code"=>200, "message"=>"success"}, @data={...}, />
 ```
-you can use data whit calling `data` property and you will be get data like a example below
+You can call the `data` property to get the data, which would return in the format as shown below
 
 ```json
 {
