@@ -24,7 +24,7 @@ To call our module, use `Datawow` followed by any of the classes provided in our
 These classes are instance methods we have created for you. You can use our provider or the recommended methods, [here](#dynamically_token_setting), when using our APIs
 
 #### Image classes `Datawow.image_*`
-There are 4 APIs for image class
+There are 6 APIs for image class
 
 ## instance method
 ```ruby
@@ -33,6 +33,7 @@ Datawow.image_photo_tag
 Datawow.image_choice
 Datawow.image_message
 Datawow.nanameue_human
+Datawow.document_verification
 ```
 ---
 
@@ -44,7 +45,7 @@ Datawow.video_classification
 ```
 ---
 #### Text classe `Datawow.text_*`
-There are 3 APIs for text class
+There are 4 APIs for text class
 
 ```ruby
 Datawow.text_closed_question
@@ -75,6 +76,7 @@ Datawow::TextCategory
 Datawow::TextConversation
 Datawow::TextJa
 Datawow::Prediction
+Datawow::DocumentVerification
 ```
 ---
 ## Available methods in our APIs
