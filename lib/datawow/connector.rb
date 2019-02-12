@@ -70,7 +70,7 @@ module Datawow
       https = Net::HTTP.new(uri.host, uri.port)
       https.use_ssl = true
       request = build_request(uri)
-      request.set_form_data(data)
+      request.body = data.to_json
       response = https.request(request)
     end
 

@@ -92,6 +92,45 @@ Description: Identifying an object in the image (60 mins response time) - This m
 |custom_id|string|No|Custom ID that used for search|
 
 ---
+
+## Document Verification
+
+### Create
+```ruby
+payload = {
+  data: <document-image-url>,
+  infos: {
+    type: {
+      value: <document-type> # - The document's type. e.g. "student card", "ID card", "Passport"
+    },
+    dob: {
+      value: <customer-date-of-birth> # - The customer's date of birth. Should be in format like `YYYY-MM-DD`.
+    }
+  },
+  postback_method: "GET", # - The HTTP method for posting result back to customer.
+  postback_url: <customer-postback-url> # - The customer's endpoint url receives result after verified success.
+}
+
+Datawow.project_key = <project-token>
+Datawow.document_verification.create(payload)
+```
+
+#### params
+| Field | Type| Required | Description |
+| ------------- |:-------------:| :-----:| :-----|
+|data| string|**Yes** |URL of image|
+|infos| Hash| **Yes** |Hash of document's informations|
+|postback_url|string| No |URL to receive result once document has been verified|
+|postback_method|string | No |Configuration HTTP method GET POST PUT PATCH|
+|custom_id|string|No|Custom ID that used for search|
+
+### Search
+```ruby
+Datawow.project_key = <project-token>
+Datawow.document_verification.find_by(id: <either-id-or-custom_id>) # - To find task by specific ID.
+# - To either retrieve task as a list or find by specific ID.
+Datawow.document_verification.all(id: <either-id-or-custom_id>, page: <number-of-result-page>, per_page: <number-of-result-per-page>)
+```
 # Common function
 For every classes there are common functions to get list of data and find by ID. We're going to show you how to use it.
 

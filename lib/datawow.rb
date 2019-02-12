@@ -10,6 +10,7 @@ require_relative 'datawow/models/images/image_photo_tags'
 require_relative 'datawow/models/images/image_choices'
 require_relative 'datawow/models/images/image_messages'
 require_relative 'datawow/models/images/nanameue_human'
+require_relative 'datawow/models/images/document_verification'
 require_relative 'datawow/models/predictions/predictors'
 
 require_relative 'datawow/models/texts/text_categories'
@@ -72,6 +73,10 @@ module Datawow
 
     def nanameue_human
       NanameueHuman.new
+    end
+
+    def document_verification
+      DocumentVerification.new
     end
   end
 end
