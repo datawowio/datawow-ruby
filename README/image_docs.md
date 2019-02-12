@@ -101,14 +101,14 @@ payload = {
   data: <document-image-url>,
   infos: {
     type: {
-      value: <customer-card-type> # - The customer card's type. e.g. "student card", "ID card"
+      value: <document-type> # - The document's type. e.g. "student card", "ID card", "Passport"
     },
     dob: {
-      value: <customer-date-of-birth> # - The customer date of birth. Should be in format like `YYYY-MM-DD`.
+      value: <customer-date-of-birth> # - The customer's date of birth. Should be in format like `YYYY-MM-DD`.
     }
   },
-  postback_method: "GET", # - The HTTP methods for posting result back to customer.
-  postback_url: <customer-postback-url> # - The customer's endpoint url receives result after verification success.
+  postback_method: "GET", # - The HTTP method for posting result back to customer.
+  postback_url: <customer-postback-url> # - The customer's endpoint url receives result after verified success.
 }
 
 Datawow.project_key = <project-token>
