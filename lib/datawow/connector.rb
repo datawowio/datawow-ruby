@@ -66,7 +66,7 @@ module Datawow
       https.use_ssl = true
       request = build_request(uri)
       request.body = data.to_json
-      response = https.request(request)
+      https.request(request)
     end
 
     def build_request(uri)

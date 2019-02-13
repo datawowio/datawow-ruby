@@ -10,6 +10,7 @@ module Datawow
     def initialize
       @project_key = nil
       @type = :text
+      @query_str ||= nil
       @path = 'text/text_conversations'
     end
   end
