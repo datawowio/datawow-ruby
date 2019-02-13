@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require_relative 'datawow/client_response'
+require_relative 'datawow/response'
 require_relative 'datawow/connector'
 require_relative 'datawow/error'
 require_relative 'datawow/version'

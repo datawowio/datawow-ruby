@@ -5,7 +5,7 @@ require 'net/https'
 require 'uri'
 require 'json'
 
-require File.expand_path('client_response.rb', __dir__)
+require File.expand_path('response.rb', __dir__)
 
 module Datawow
   # :nodoc:
@@ -21,34 +21,29 @@ module Datawow
     def post(data = {})
       @method = :POST
       response = send_request(data)
-
-      body = JSON.parse response.body
-
-      Response.new(body['data'], response.code, body['meta']['message'], body['meta'], 1)
+      response_body = JSON.parse response.body
+      Response.new(response_body, response.code)
     end
 
     def get(data = {}, query_str = true)
       @method = :GET
       response = send_request(data, query_str)
-      body = JSON.parse response.body
-
-      Response.new(body['data'], response.code, body['meta']['message'], body['meta'], body['meta']['total_count'])
+      response_body = JSON.parse response.body
+      Response.new(response_body, response.code)
     end
 
     def put(data = {})
       @method = :PUT
       response = send_request(data)
-      body = JSON.parse response.body
-
-      Response.new(body['data'], response.code, body['meta']['message'], body['meta'], 1)
+      response_body = JSON.parse response.body
+      Response.new(response_body, response.code)
     end
 
     def delete(data = {}, query_str = true)
       @method = :DELETE
       response = send_request(data, query_str)
-      body = JSON.parse response.body
-
-      Response.new(body['data'], response.code, body['meta']['message'], body['meta'], body['meta']['total_count'])
+      response_body = JSON.parse response.body
+      Response.new(response_body, response.code)
     end
 
     private
@@ -71,7 +66,7 @@ module Datawow
       https.use_ssl = true
       request = build_request(uri)
       request.body = data.to_json
-      response = https.request(request)
+      https.request(request)
     end
 
     def build_request(uri)
@@ -106,8 +101,8 @@ module Datawow
     def base_point(type)
       {
         image: 'https://kiyo-image.datawow.io/api',
-        ai:    'https://kiyo-image.datawow.io/api',
-        text:  'https://kiyo-text.datawow.io/api',
+        ai: 'https://kiyo-image.datawow.io/api',
+        text: 'https://kiyo-text.datawow.io/api',
         video: 'https://kiyo-image.datawow.io/api'
       }[type]
     end

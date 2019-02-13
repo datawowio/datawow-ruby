@@ -10,6 +10,7 @@ module Datawow
     def initialize
       @project_key = nil
       @type = :image
+      @query_str ||= nil
       @path = 'images/closed_questions'
     end
   end
