@@ -100,10 +100,10 @@ module Datawow
 
     def base_point(type)
       {
-        image: 'https://kiyo-image.datawow.io/api',
-        ai: 'https://kiyo-image.datawow.io/api',
-        text: 'https://kiyo-text.datawow.io/api',
-        video: 'https://kiyo-image.datawow.io/api'
+        image: 'https://image.datawow.io/api',
+        ai: 'https://image.datawow.io/api',
+        text: 'https://text.datawow.io/api',
+        video: 'https:/image.datawow.io/api'
       }[type]
     end
   end
