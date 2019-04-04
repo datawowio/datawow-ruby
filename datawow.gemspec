@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |s|
   s.name          = 'datawow'
-  s.version       = '1.4.3'
+  s.version       = '1.4.4'
   s.date          = '2019-02-13'
   s.summary       = 'HTTP RESTFul for calling DataWow APIs'
   s.description   = 'Moderation suite'
