@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative 'datawow/response'
 require_relative 'datawow/connector'
 require_relative 'datawow/error'
@@ -12,6 +13,8 @@ require_relative 'datawow/models/images/image_messages'
 require_relative 'datawow/models/images/nanameue_human'
 require_relative 'datawow/models/images/document_verification'
 require_relative 'datawow/models/predictions/predictors'
+
+require_relative 'datawow/models/taskers/tasker'
 
 require_relative 'datawow/models/texts/text_categories'
 require_relative 'datawow/models/texts/text_closed_questions'
@@ -77,6 +80,10 @@ module Datawow
 
     def document_verification
       DocumentVerification.new
+    end
+
+    def tasker
+      Tasker.new
     end
   end
 end
