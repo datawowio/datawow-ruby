@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'simplecov'
 
@@ -16,23 +18,24 @@ class TestBase < Minitest::Test
               :text_closed_questions, :text_closed_question, :nanameue_human, :nanameue_humans,
               :text_ja, :text_jas, :image_document_verifications, :image_document_verification
 
-  IMAGE_CHOICES_URL = 'https://image.datawow.io/api/v1/images/choices'.freeze
-  IMAGE_CHOICE_URL = 'https://image.datawow.io/api/v1/images/choice'.freeze
-  IMAGE_CLOSED_QUESTIONS_URL = 'https://image.datawow.io/api/v1/images/closed_questions'.freeze
-  IMAGE_CLOSED_QUESTION_URL = 'https://image.datawow.io/api/v1/images/closed_question'.freeze
-  IMAGE_MESSAGES_URL = 'https://image.datawow.io/api/v1/images/messages'.freeze
-  IMAGE_MESSAGE_URL = 'https://image.datawow.io/api/v1/images/message'.freeze
-  IMAGE_PHOTO_TAGS = 'https://image.datawow.io/api/v1/images/photo_tags'.freeze
-  IMAGE_PHOTO_TAG = 'https://image.datawow.io/api/v1/images/photo_tag'.freeze
-  IMAGE_DOCUMENT_VERIFICATION_URL = 'https://image.datawow.io/api/v1/images/document_verifications'.freeze
-  PREDICTIONS_URL = 'https://image.datawow.io/api/v1/prime/predictions'.freeze
-  IMAGE_URL = 'https://image.datawow.io/api/v1/projects/images'.freeze
-  VIDEO_URL = 'https://image.datawow.io/api/v1/videos/closed_questions'.freeze
-  NANAMEUE_HUMAN_URL = 'https://image.datawow.io/api/v1/jobs/nanameue/consensuses'.freeze
-  TEXT_CATEGORY_URL = 'https://text.datawow.io/api/v1/text/text_categories'.freeze
-  TEXT_CONVERSATION_URL = 'https://text.datawow.io/api/v1/text/text_conversations'.freeze
-  TEXT_CLOSED_QUESTION_URL = 'https://text.datawow.io/api/v1/text/text_closed_questions'.freeze
-  TEXT_JA_URL = 'https://text.datawow.io/api/v1/text_ai/text_ja'.freeze
+  IMAGE_CHOICES_URL = 'https://image.datawow.io/api/v1/images/choices'
+  IMAGE_CHOICE_URL = 'https://image.datawow.io/api/v1/images/choice'
+  IMAGE_CLOSED_QUESTIONS_URL = 'https://image.datawow.io/api/v1/images/closed_questions'
+  IMAGE_CLOSED_QUESTION_URL = 'https://image.datawow.io/api/v1/images/closed_question'
+  IMAGE_MESSAGES_URL = 'https://image.datawow.io/api/v1/images/messages'
+  IMAGE_MESSAGE_URL = 'https://image.datawow.io/api/v1/images/message'
+  IMAGE_PHOTO_TAGS = 'https://image.datawow.io/api/v1/images/photo_tags'
+  IMAGE_PHOTO_TAG = 'https://image.datawow.io/api/v1/images/photo_tag'
+  IMAGE_DOCUMENT_VERIFICATION_URL = 'https://image.datawow.io/api/v1/images/document_verifications'
+  PREDICTIONS_URL = 'https://image.datawow.io/api/v1/prime/predictions'
+  IMAGE_URL = 'https://image.datawow.io/api/v1/projects/images'
+  VIDEO_URL = 'https://image.datawow.io/api/v1/videos/closed_questions'
+  NANAMEUE_HUMAN_URL = 'https://image.datawow.io/api/v1/jobs/nanameue/consensuses'
+  TEXT_CATEGORY_URL = 'https://text.datawow.io/api/v1/text/text_categories'
+  TEXT_CONVERSATION_URL = 'https://text.datawow.io/api/v1/text/text_conversations'
+  TEXT_CLOSED_QUESTION_URL = 'https://text.datawow.io/api/v1/text/text_closed_questions'
+  TEXT_JA_URL = 'https://text.datawow.io/api/v1/text_ai/text_ja'
+  MODERATION_URL = 'https://api.datawow.io/api/v1/moderations'
 
   def setup
     @image_choices = FileReader.new('test/fixtures/image_choice/all.json').read_json
@@ -59,6 +62,9 @@ class TestBase < Minitest::Test
     @text_closed_questions = FileReader.new('test/fixtures/text_closed_question/all.json').read_json
     @text_ja = FileReader.new('test/fixtures/text_ja/create.json').read_json
     @text_jas = FileReader.new('test/fixtures/text_ja/all.json').read_json
+    @moderation_all = FileReader.new('test/fixtures/moderation/all.json').read_json
+    @moderation_create = FileReader.new('test/fixtures/moderation/create.json').read_json
+    @moderation_find_by = FileReader.new('test/fixtures/moderation/find_by.json').read_json
     @options = {
       token: 'project token'
     }
