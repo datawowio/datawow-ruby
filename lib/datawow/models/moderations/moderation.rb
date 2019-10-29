@@ -2,14 +2,14 @@
 
 module Datawow
   # :nodoc:
-  class Tasker
+  class Moderation
     include Datawow::Models::Interface
 
     attr_writer :project_key
 
     def initialize(token = nil)
       @project_key = token
-      @type = :tasker
+      @type = :moderation
       @query_str ||= nil
 
       @path = 'moderations'
