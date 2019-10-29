@@ -83,7 +83,7 @@ module Datawow
     end
 
     def moderation
-      moderation.new
+      Moderation.new
     end
   end
 end
