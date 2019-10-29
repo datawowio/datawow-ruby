@@ -103,7 +103,7 @@ module Datawow
         image: 'https://image.datawow.io/api',
         ai: 'https://image.datawow.io/api',
         text: 'https://text.datawow.io/api',
-        video: 'https:/image.datawow.io/api'
+        video: 'https://image.datawow.io/api'
       }[type]
     end
   end
