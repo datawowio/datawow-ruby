@@ -10,8 +10,6 @@ module Datawow
     def initialize(token = nil)
       @project_key = token
       @type = :moderation
-      @query_str ||= nil
-
       @path = 'moderations'
     end
   end

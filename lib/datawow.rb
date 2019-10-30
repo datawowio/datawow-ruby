@@ -14,7 +14,7 @@ require_relative 'datawow/models/images/nanameue_human'
 require_relative 'datawow/models/images/document_verification'
 require_relative 'datawow/models/predictions/predictors'
 
-require_relative 'datawow/models/moderations/moderation'
+require_relative 'datawow/models/moderation'
 
 require_relative 'datawow/models/texts/text_categories'
 require_relative 'datawow/models/texts/text_closed_questions'
