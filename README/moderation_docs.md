@@ -1,6 +1,6 @@
 # Moderation class
 
-We're going to explant about parameter for creation and example of use
+We're going to explain about how to and example of usage
 
 # Table of Content
 - [How to use](#how-to-use)
