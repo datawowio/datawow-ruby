@@ -37,7 +37,7 @@ Datawow.document_verification
 ```
 ---
 
-#### Video classes `Datawow.video_*`
+#### Video class `Datawow.video_*`
 There is 1 API for video class
 
 ```ruby
@@ -56,7 +56,7 @@ Datawow.text_ja
 
 ---
 
-#### Prediction classes `Datawow.prediction`
+#### Prediction class `Datawow.prediction`
 There is 1 API for prediction class
 
 ```ruby
@@ -65,7 +65,7 @@ Datawow.prediction
 
 ---
 
-#### Moderation classes `Datawow.moderation`
+#### Moderation class `Datawow.moderation`
 There is 1 API for moderation class
 
 ```ruby
