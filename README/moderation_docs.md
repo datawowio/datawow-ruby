@@ -27,7 +27,7 @@ params = {
 Datawow.moderation.create(params)
 ```
 
-Data could be text or image or else according to your project's input type
+`data` could be text or image's url depends on your project's input type
 
 #### params
 
@@ -49,7 +49,7 @@ response = Datawow.moderation.create({
 
 print(response.body)
 ```
-If you could create moderation successfully, you will receive response like below:
+You will receive response like below, once you created moderation successfully.
 
 ```ruby
 {
@@ -125,7 +125,7 @@ Datawow.moderation.all
 Fields `result` and `processed_at` will be present if your data was successfully processed.
 
 ### Find by
-Method `find_by` is used to find a particular moderation. you can use either its
+Method `find_by` is used to find a particular moderation. You can use either its
 ID or Custom ID. This method will return only moderation with fully matched ID.
 
 ```ruby
