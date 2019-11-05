@@ -37,14 +37,14 @@ Datawow.document_verification
 ```
 ---
 
-#### Video classe `Datawow.video_*`
+#### Video class `Datawow.video_*`
 There is 1 API for video class
 
 ```ruby
 Datawow.video_classification
 ```
 ---
-#### Text classe `Datawow.text_*`
+#### Text classes `Datawow.text_*`
 There are 4 APIs for text class
 
 ```ruby
@@ -56,11 +56,20 @@ Datawow.text_ja
 
 ---
 
-#### Prediction classes `Datawow.prediction`
-There are 1 API for prediction class
+#### Prediction class `Datawow.prediction`
+There is 1 API for prediction class
 
 ```ruby
 Datawow.prediction
+```
+
+---
+
+#### Moderation class `Datawow.moderation`
+There is 1 API for moderation class
+
+```ruby
+Datawow.moderation
 ```
 
 Above methods are shortcuts for calling the following classes
@@ -77,6 +86,7 @@ Datawow::TextConversation
 Datawow::TextJa
 Datawow::Prediction
 Datawow::DocumentVerification
+Datawow::Moderation
 ```
 ---
 ## Available methods in our APIs
@@ -199,3 +209,4 @@ end
  - Video Documentation [link](README/video_docs.md)
  - Text Documentation [link](README/text_docs.md)
  - AI/Prediction Documentation [link](README/ai_docs.md)
+ - Moderation Documentation [link](README/moderation_docs.md)
