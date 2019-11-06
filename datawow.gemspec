@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.email         = 'ton@nanameue.jp'
   s.files         = `git ls-files`.split("\n")
   s.homepage      = 'https://datawow.io'
-  s.license       = 'Commercial'
+  s.license       = 'MIT'
   s.require_paths = ['lib']
 
   s.add_runtime_dependency 'json',               '~> 1.8',  '>= 1.8.3'
