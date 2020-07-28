@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.license       = 'MIT'
   s.require_paths = ['lib']
 
-  s.add_runtime_dependency 'json',               '~> 1.8',  '>= 1.8.3'
+  s.add_runtime_dependency 'json',               '>= 1.8.3', '< 3.0'
   s.add_development_dependency 'minitest',       '~> 5.11', '>= 5.11.3'
   s.add_development_dependency 'rake',           '~> 12.3'
   s.add_development_dependency 'simplecov',      '~> 0.15.1'
